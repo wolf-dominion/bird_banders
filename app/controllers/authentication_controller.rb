@@ -11,11 +11,11 @@ class AuthenticationController < ApplicationController
 
                 render json: {token: token}
             else
-                render json: "User found but password wrong", status: unauthorized
+                render json: "User found but password wrong" #, status: unauthorized
             end
             
         else
-            render json: "User not found", status: unauthorized
+            render json: "User not found" #, status: unauthorized
         end
     end
 
