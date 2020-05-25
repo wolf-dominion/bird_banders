@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_23_012957) do
+ActiveRecord::Schema.define(version: 2020_05_25_204609) do
 
   create_table "bird_captures", force: :cascade do |t|
     t.integer "bird_id", null: false
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 2020_05_23_012957) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "username"
-    t.string "password"
     t.string "email"
+    t.string "password_digest"
   end
 
   add_foreign_key "bird_captures", "birds"
