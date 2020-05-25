@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_22_234432) do
+ActiveRecord::Schema.define(version: 2020_05_23_012957) do
 
   create_table "bird_captures", force: :cascade do |t|
-    t.integer "user_id", null: false
     t.integer "bird_id", null: false
     t.integer "capture_id", null: false
+    t.integer "membership_id"
     t.index ["bird_id"], name: "index_bird_captures_on_bird_id"
     t.index ["capture_id"], name: "index_bird_captures_on_capture_id"
-    t.index ["user_id"], name: "index_bird_captures_on_user_id"
+    t.index ["membership_id"], name: "index_bird_captures_on_membership_id"
   end
 
   create_table "birds", force: :cascade do |t|
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_05_22_234432) do
 
   add_foreign_key "bird_captures", "birds"
   add_foreign_key "bird_captures", "captures"
-  add_foreign_key "bird_captures", "users"
+  add_foreign_key "bird_captures", "memberships"
   add_foreign_key "memberships", "research_groups"
   add_foreign_key "memberships", "users"
 end
