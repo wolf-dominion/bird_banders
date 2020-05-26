@@ -5,7 +5,7 @@ class AuthenticationController < ApplicationController
         
         if @user
             if @user.authenticate(params[:password])
-                payload = {user_id: @user.id}
+                payload = {user_id: @user.id, username: @user.username}
                 secret = Rails.application.secrets.secret_key_base
                 token = JWT.encode(payload, secret)
 

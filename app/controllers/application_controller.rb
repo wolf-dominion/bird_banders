@@ -6,7 +6,7 @@ class ApplicationController < ActionController::API
             secret = Rails.application.secrets.secret_key_base
             decoded_token = JWT.decode(token, secret)
         rescue
-            render json: {message: "resuce catch method activated"}
+            render json: {message: "rescue catch method activated"}
         end
     end
 end

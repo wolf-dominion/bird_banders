@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_25_204609) do
+ActiveRecord::Schema.define(version: 2020_05_26_171814) do
 
   create_table "bird_captures", force: :cascade do |t|
     t.integer "bird_id", null: false
@@ -37,6 +37,12 @@ ActiveRecord::Schema.define(version: 2020_05_25_204609) do
     t.integer "research_group_id", null: false
     t.index ["research_group_id"], name: "index_memberships_on_research_group_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "controller"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "research_groups", force: :cascade do |t|

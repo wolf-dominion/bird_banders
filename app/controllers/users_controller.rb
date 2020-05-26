@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-    before_action :authenticate, only: [:index]
-    before_action :set_user, only: [:update, :destroy]
+    # before_action :authenticate, only: [:index]
+    # before_action :set_user, only: [:update, :destroy]
     def index
-            authenticate
+            # authenticate
             @users = User.all
             render json: @users
     end
@@ -23,10 +23,11 @@ class UsersController < ApplicationController
     end
 
     def update
+        @user = User.find(params[:id])
         if @user.update(user_params)
             render json: @user
         else
-            render json: @user.errors, status: :unprocessable_entity
+            render json: {message: "Could not update"}
         end
     end
 
