@@ -11,8 +11,9 @@ class BirdCapturesController < ApplicationController
     end
 
     def create
+        #byebug
         @birdcapture = BirdCapture.create(birdcapture_params)
-        render json: @birdcapture
+        render json: @birdCapture
     end
 
     def update
@@ -28,7 +29,7 @@ class BirdCapturesController < ApplicationController
     private
 
     def birdcapture_params
-        params.require(:birdCapture).permit(:bird_id, :capture_id, :user_id).reject { |_, v| v.blank? }
+        params.require(:birdCapture).permit(:bird_id, :capture_id, :membership_id).reject { |_, v| v.blank? }
     end
 
     def get_birdcapture_by_id

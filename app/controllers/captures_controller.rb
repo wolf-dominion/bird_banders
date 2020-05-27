@@ -2,8 +2,8 @@ class CapturesController < ApplicationController
     before_action :get_capture_by_id, only: [:show, :update, :destroy]
     def index
         @captures = Capture.all
-        tagged_hash = {"Captures" => @captures}
-        render json: tagged_hash
+        #tagged_hash = {"Captures" => @captures}
+        render json: @captures
     end
 
     def show
