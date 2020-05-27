@@ -2,8 +2,8 @@ class BirdsController < ApplicationController
     before_action :get_bird_by_id, only: [:show, :update, :destroy]
     def index
         @birds = Bird.all
-        tagged_hash = {"Birds" => @birds}
-        render json: tagged_hash
+        #tagged_hash = {"Birds" => @birds}
+        render json: @birds
     end
 
     def show
@@ -20,6 +20,18 @@ class BirdsController < ApplicationController
         render json: @bird
     end
 
+    def find_by_bandId
+        #byebug
+        @bird = Bird.find_by(bandId: params[:bandId])
+        render json: @bird
+    end
+
+    # def find_by_bandId
+    #     byebug
+    #     @bird = Bird.find(params[:bandId])
+    #     render json: @bird
+    # end
+
     # def destroy
     #     @capture.destroy
     #     redirect_to action: "index"
@@ -32,7 +44,7 @@ class BirdsController < ApplicationController
     end
 
     def get_bird_by_id
-        @bird = Bird.find(params[:id])
+            @bird = Bird.find(params[:id])
     end
 
 end

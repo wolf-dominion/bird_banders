@@ -9,4 +9,5 @@ Rails.application.routes.draw do
 
   post "/login", to: "authentication#login"
   get "secret-profiles", to: "profiles#index"
+  post "/find-by-bandid", to: "birds#find_by_bandId"
 end

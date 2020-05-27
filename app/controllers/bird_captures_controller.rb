@@ -2,8 +2,8 @@ class BirdCapturesController < ApplicationController
     before_action :get_capture_by_id, only: [:show, :update, :destroy]
     def index
         @birdcaptures = BirdCapture.all
-        tagged_hash = {"Bird_captures" => @birdcaptures}
-        render json: tagged_hash
+        #tagged_hash = {"Bird_captures" => @birdcaptures}
+        render json: @birdcaptures
     end
 
     def show
