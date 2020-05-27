@@ -13,7 +13,7 @@ class BirdCapturesController < ApplicationController
     def create
         #byebug
         @birdcapture = BirdCapture.create(birdcapture_params)
-        render json: @birdCapture
+        render json: @birdcapture
     end
 
     def update
