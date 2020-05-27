@@ -1,19 +1,8 @@
 class ProfilesController < ApplicationController
-    def authenticate 
-        
-    end
+    before_action :authenticate, only: [:index]
+    
     def index
-        authorization_header = request.headers["Authorization"]
-        if !authorization_header
-            render json: {error: "No auth header present"}
-        else
-            token = authorization_header.split(" ")[1]
-            secret = Rails.application.secrets.secret_key_base
-            begin
-                payload = JWT.decode(token, secret)[0]
-                render json: {top_secret_stuff: "Private user page displaying, #{payload['username']}"}
-
-            rescue
-        end
+        # render json: {top_secret_stuff: "Private user page displaying for #{@user.username}, your id is #{@user.id}"}
+        render json: {data: @user, memberships: @memberships, researchGroups: @researchGroups}
     end
 end
