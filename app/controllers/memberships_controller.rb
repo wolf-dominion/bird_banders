@@ -4,11 +4,14 @@ class MembershipsController < ApplicationController
     def index
         # authenticate
         @memberships = Membership.all
-        render json: @memberships
+        #render json: @rgs, include: [:memberships => {:include => [:user, :bird_captures=> {:include => {:membership => {:include => :user}}}]}]
+
+        render json: @memberships, include: [:user, :bird_captures=> {:include => [:bird, :capture]}]
     end
 
     def show
         @membership = Membership.find(params[:id])
+        
         render json: @membership
     end
 
