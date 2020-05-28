@@ -1,6 +1,6 @@
 class MembershipsController < ApplicationController
     # before_action :authenticate, only: [:index]
-    before_action :set_membership, only: [:update, :destroy]
+    before_action :set_membership, only: [:update]
     def index
         # authenticate
         @memberships = Membership.all
@@ -31,9 +31,18 @@ class MembershipsController < ApplicationController
         end
     end
 
-    # # DELETE /bird_captures/1
     # def destroy
-    #   @bird_capture.destroy
+    #     #byebug
+    #     @user = User.find(params[:user_id])
+    #     @group = ResearchGroup.find(params[:research_group_id])
+
+    #     @membership_id = Membership.where(user_id: @user.id, research_group_id: @group.id)
+
+    #     @bircaptures = BirdCaptures.all
+    #     @birdCaptures = @birdCaptures.where()
+
+    #     @memberships = Membership.all
+    #     @memberships = @memberships.where(user_id: @user.id, research_group_id: @group.id).delete_all
     # end
 
     private
